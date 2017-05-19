@@ -72,7 +72,6 @@ class Wrdsb_Staff_Taxonomies {
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -103,12 +102,6 @@ class Wrdsb_Staff_Taxonomies {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-staff-taxonomies-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-staff-taxonomies-i18n.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wrdsb-staff-taxonomies-admin.php';
@@ -120,23 +113,6 @@ class Wrdsb_Staff_Taxonomies {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wrdsb-staff-taxonomies-public.php';
 
 		$this->loader = new Wrdsb_Staff_Taxonomies_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Wrdsb_Staff_Taxonomies_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Wrdsb_Staff_Taxonomies_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 
