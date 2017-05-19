@@ -114,11 +114,13 @@ class Wrdsb_Staff_Taxonomies {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wrdsb-staff-taxonomies-public.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-audiences.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-owners.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-categories.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-contacts.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-organizational-units.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-privacy-levels.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-lifecycle-phases.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-organizational-units.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-owners.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-privacy-levels.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-tags.php';
 
 		$this->loader = new Wrdsb_Staff_Taxonomies_Loader();
 
