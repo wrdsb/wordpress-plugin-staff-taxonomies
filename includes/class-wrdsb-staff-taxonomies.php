@@ -72,6 +72,7 @@ class Wrdsb_Staff_Taxonomies {
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
+		$this->define_plugin_hooks();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -112,9 +113,48 @@ class Wrdsb_Staff_Taxonomies {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wrdsb-staff-taxonomies-public.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-audiences.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-owners.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-contacts.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-organizational-units.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-privacy-levels.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-wrdsb-staff-taxonomies-lifecycle-phases.php';
+
 		$this->loader = new Wrdsb_Staff_Taxonomies_Loader();
 
 	}
+
+	/**
+	 * Register all of the hooks enabling base functionality for the plugin,
+	 * such as custom post types, taxonomies, etc.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_plugin_hooks() {
+
+		$staff_categories_ctax = new WRDSB_Staff_Taxonomies_Categories_CTax();
+		$staff_tags_ctax = new WRDSB_Staff_Taxonomies_Tags_CTax();
+
+		$staff_owners_ctax = new WRDSB_Staff_Taxonomies_Owners_CTax();
+		$staff_contacts_ctax = new WRDSB_Staff_Taxonomies_Contacts_CTax();
+		$staff_org_units_ctax = new WRDSB_Staff_Taxonomies_Organizational_Units_CTax();
+		$staff_privacy_levels_ctax = new WRDSB_Staff_Taxonomies_Privacy_Levels_CTax();
+		$staff_lifecycle_phases_ctax = new WRDSB_Staff_Taxonomies_Lifecycle_Phases_CTax();
+		$staff_audiences_ctax = new WRDSB_Staff_Taxonomies_Audiences_CTax();
+
+		$this->loader->add_action( 'init', $staff_categories_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_tags_ctax, 'register_ctax', 0);
+
+		$this->loader->add_action( 'init', $staff_owners_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_contacts_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_org_units_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_privacy_levels_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_lifecycle_phases_ctax, 'register_ctax', 0);
+		$this->loader->add_action( 'init', $staff_audiences_ctax, 'register_ctax', 0);
+
+	}
+
 
 	/**
 	 * Register all of the hooks related to the admin area functionality
